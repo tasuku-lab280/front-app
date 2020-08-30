@@ -2,52 +2,40 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { Scrollbars } from "react-custom-scrollbars";
 import "../styles/TodoList.css";
+import { useSelector } from "react-redux";
 
 function TodoList() {
-  const initialState = [
-    {
-      task: "Learn vue.js",
-      user_id: 1,
-      user_name: "スライム",
-    },
-    {
-      task: "Learn React Hook",
-      user_id: 2,
-      user_name: "ドラキー",
-    },
-    {
-      task: "Learn Gatsby.js",
-      user_id: 3,
-      user_name: "ギガンテス",
-    },
-  ];
+  // storeからstateを取得
+  const selector = useSelector((state) => state).message;
 
-  const [todos, setTodo] = useState(initialState);
+  const [messages, setMessage] = useState(selector);
+  const [body, setBody] = useState("");
 
-  const [task, setTask] = useState("");
-
-  const handleNewTask = (event) => {
-    setTask(event.target.value);
+  const handleNewBody = (event) => {
+    setBody(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (task === "") return;
-    setTodo((todos) => [...todos, { task, user_id: 1, user_name: "スライム" }]);
-    setTask("");
+    if (body === "") return;
+    setMessage((messages) => [
+      ...messages,
+      { body, user_id: 1, user_name: "スライム" },
+    ]);
+    setBody("");
   };
 
-  const handleRemoveTask = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodo(newTodos);
+  const handleRemoveBody = (index) => {
+    const newMessages = [...messages];
+    newMessages.splice(index, 1);
+    setMessage(newMessages);
   };
 
   return (
     <div>
       <Scrollbars style={{ marginTop: 50, width: 1000, height: 450 }}>
         <ul>
-          {todos.map((todo, index) => (
+          {messages.map((todo, index) => (
             <div
               className={
                 todo.user_id == 1
@@ -63,11 +51,11 @@ function TodoList() {
                     : "other-message-content"
                 }
               >
-                <span className="message-text">{todo.task}</span>
+                <span className="message-text">{todo.body}</span>
               </div>
               <button
                 className="delete-btn"
-                onClick={() => handleRemoveTask(index)}
+                onClick={() => handleRemoveBody(index)}
               >
                 削除
               </button>
@@ -81,9 +69,9 @@ function TodoList() {
           label="メッセージを入力"
           className="text"
           margin="normal"
-          value={task}
+          value={body}
           placeholder="メッセージを入力"
-          onChange={handleNewTask}
+          onChange={handleNewBody}
         />
         <div>
           <input type="submit" value="送信する" />
