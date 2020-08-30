@@ -1,37 +1,37 @@
 // redux.js
-import { combineReducers, createStore } from "redux";
+import {combineReducers, createStore} from 'redux';
 
 // actions.js
 // 引数nameをとり、{type: "ADD_NAME", name: name}を返すjsの関数。
 export const setMessage = () => ({
-  type: "SET_MESSAGE",
+  type: 'SET_MESSAGE',
 });
 
 export const addMessage = (message) => ({
-  type: "ADD_MESSAGE",
+  type: 'ADD_MESSAGE',
   message: message,
 });
 
 export const deleteMessage = (message) => ({
-  type: "DELETE_MESSAGE",
+  type: 'DELETE_MESSAGE',
   message: message,
 });
 
 const initialState = [
   {
-    body: "Learn vue.js",
+    body: 'Learn vue.js',
     user_id: 1,
-    user_name: "スライム",
+    user_name: 'スライム',
   },
   {
-    body: "Learn React Hook",
+    body: 'Learn React Hook',
     user_id: 2,
-    user_name: "ドラキー",
+    user_name: 'ドラキー',
   },
   {
-    body: "Learn Gatsby.js",
+    body: 'Learn Gatsby.js',
     user_id: 3,
-    user_name: "ギガンテス",
+    user_name: 'ギガンテス',
   },
 ];
 // reducers.js
@@ -40,10 +40,10 @@ const initialState = [
 // reducerはactionで生成されたオブジェクトを受け取り、巨大なjson(store)を書き換える関数です。
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_MESSAGE":
-      return { ...state };
-    case "ADD_MESSAGE":
-      return { ...state, message: action.message };
+    case 'SET_MESSAGE':
+      return {...state};
+    case 'ADD_MESSAGE':
+      return {...state, message: action.message};
     default:
       return state;
   }

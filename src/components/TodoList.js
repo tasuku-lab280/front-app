@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import { Scrollbars } from "react-custom-scrollbars";
-import "../styles/TodoList.css";
-import { useSelector } from "react-redux";
+import React, {useState} from 'react';
+import TextField from '@material-ui/core/TextField';
+import {Scrollbars} from 'react-custom-scrollbars';
+import '../styles/TodoList.css';
+import {useSelector} from 'react-redux';
 
 function TodoList() {
   // storeからstateを取得
@@ -10,7 +10,7 @@ function TodoList() {
 
   // state
   const [messages, setMessage] = useState(selector);
-  const [body, setBody] = useState("");
+  const [body, setBody] = useState('');
 
   // メッセージ入力
   const handleNewBody = (event) => {
@@ -20,12 +20,12 @@ function TodoList() {
   // メッセージ送信
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (body === "") return;
+    if (body === '') return;
     setMessage((messages) => [
       ...messages,
-      { body, user_id: 1, user_name: "スライム" },
+      {body, user_id: 1, user_name: 'スライム'},
     ]);
-    setBody("");
+    setBody('');
   };
 
   // メッセージ削除
@@ -37,31 +37,28 @@ function TodoList() {
 
   return (
     <div>
-      <Scrollbars style={{ marginTop: 50, width: 1000, height: 450 }}>
+      <Scrollbars style={{marginTop: 50, width: 1000, height: 450}}>
         <ul>
           {messages.map((todo, index) => (
             <div
               className={
                 todo.user_id === 1
-                  ? "my-message-container"
-                  : "other-message-container"
+                  ? 'my-message-container'
+                  : 'other-message-container'
               }
-              key={index}
-            >
+              key={index}>
               <span>{todo.user_name}</span>
               <div
                 className={
                   todo.user_id === 1
-                    ? "my-message-content"
-                    : "other-message-content"
-                }
-              >
+                    ? 'my-message-content'
+                    : 'other-message-content'
+                }>
                 <span className="message-text">{todo.body}</span>
               </div>
               <button
                 className="delete-btn"
-                onClick={() => handleRemoveBody(index)}
-              >
+                onClick={() => handleRemoveBody(index)}>
                 削除
               </button>
             </div>

@@ -1,8 +1,8 @@
-import React from "react";
-import "./styles/App.css";
+import React from 'react';
+import './styles/App.css';
 
-import ButtonAppBar from "./components/ButtonAppBar.js";
-import TodoList from "./components/TodoList";
+import ButtonAppBar from './components/ButtonAppBar.js';
+import TodoList from './components/TodoList';
 
 const App = () => {
   return (
