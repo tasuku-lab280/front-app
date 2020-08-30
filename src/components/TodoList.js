@@ -8,13 +8,16 @@ function TodoList() {
   // storeからstateを取得
   const selector = useSelector((state) => state).message;
 
+  // state
   const [messages, setMessage] = useState(selector);
   const [body, setBody] = useState("");
 
+  // メッセージ入力
   const handleNewBody = (event) => {
     setBody(event.target.value);
   };
 
+  // メッセージ送信
   const handleSubmit = (event) => {
     event.preventDefault();
     if (body === "") return;
@@ -25,6 +28,7 @@ function TodoList() {
     setBody("");
   };
 
+  // メッセージ削除
   const handleRemoveBody = (index) => {
     const newMessages = [...messages];
     newMessages.splice(index, 1);
@@ -38,15 +42,16 @@ function TodoList() {
           {messages.map((todo, index) => (
             <div
               className={
-                todo.user_id == 1
+                todo.user_id === 1
                   ? "my-message-container"
                   : "other-message-container"
               }
+              key={index}
             >
               <span>{todo.user_name}</span>
               <div
                 className={
-                  todo.user_id == 1
+                  todo.user_id === 1
                     ? "my-message-content"
                     : "other-message-content"
                 }

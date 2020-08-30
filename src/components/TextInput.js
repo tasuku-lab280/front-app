@@ -4,9 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import "../styles/TextInput.css";
 import SendButtons from "./SendButton";
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-
 class TextInput extends Component {
   render() {
     return (

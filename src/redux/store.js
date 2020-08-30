@@ -7,9 +7,14 @@ export const setMessage = () => ({
   type: "SET_MESSAGE",
 });
 
-export const addMessage = (name) => ({
+export const addMessage = (message) => ({
   type: "ADD_MESSAGE",
-  name: name,
+  message: message,
+});
+
+export const deleteMessage = (message) => ({
+  type: "DELETE_MESSAGE",
+  message: message,
 });
 
 const initialState = [
@@ -38,7 +43,7 @@ const reducer = (state = initialState, action) => {
     case "SET_MESSAGE":
       return { ...state };
     case "ADD_MESSAGE":
-      return { ...state, name: action.name };
+      return { ...state, message: action.message };
     default:
       return state;
   }
