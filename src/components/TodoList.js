@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import {Scrollbars} from 'react-custom-scrollbars';
 import '../styles/TodoList.css';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 function TodoList() {
   // storeからstateを取得
+  const dispatch = useDispatch();
   const selector = useSelector((state) => state).message;
 
   // state
@@ -28,37 +29,30 @@ function TodoList() {
     setBody('');
   };
 
-  // メッセージ削除
-  const handleRemoveBody = (index) => {
-    const newMessages = [...messages];
-    newMessages.splice(index, 1);
-    setMessage(newMessages);
-  };
-
   return (
     <div>
       <Scrollbars style={{marginTop: 50, width: 1000, height: 450}}>
         <ul>
-          {messages.map((todo, index) => (
+          {messages.map((message, index) => (
             <div
               className={
-                todo.user_id === 1
+                message.user_id === 1
                   ? 'my-message-container'
                   : 'other-message-container'
               }
               key={index}>
-              <span>{todo.user_name}</span>
+              <span>{message.user_name}</span>
               <div
                 className={
-                  todo.user_id === 1
+                  message.user_id === 1
                     ? 'my-message-content'
                     : 'other-message-content'
                 }>
-                <span className="message-text">{todo.body}</span>
+                <span className="message-text">{message.body}</span>
               </div>
               <button
                 className="delete-btn"
-                onClick={() => handleRemoveBody(index)}>
+                onPress={dispatch.deleteMessage(message)}>
                 削除
               </button>
             </div>

@@ -12,9 +12,9 @@ export const addMessage = (message) => ({
   message: message,
 });
 
-export const deleteMessage = (message) => ({
+export const deleteMessage = () => ({
   type: 'DELETE_MESSAGE',
-  message: message,
+  message: '',
 });
 
 const initialState = [
@@ -44,6 +44,8 @@ const reducer = (state = initialState, action) => {
       return {...state};
     case 'ADD_MESSAGE':
       return {...state, message: action.message};
+    case 'DELETE_MESSAGE':
+      return {...state, message: ''};
     default:
       return state;
   }
