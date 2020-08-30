@@ -1,0 +1,27 @@
+.my-message-container {
+  width: 450px;
+  margin: 40px 0 40px auto;
+}
+.other-message-container {
+  width: 450px;
+  margin: 40px 0;
+}
+.my-message-content {
+  width: 80%;
+  padding: 20px;
+  color: white;
+  background-color: #14178f;
+  border-radius: 30px;
+}
+.other-message-content {
+  width: 80%;
+  padding: 20px;
+  border: 2px solid #14178f;
+  border-radius: 30px;
+}
+.message-text {
+  word-wrap: break-word;
+}
+.delete-btn {
+  margin-top: 10px;
+}
