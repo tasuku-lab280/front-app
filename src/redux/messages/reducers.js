@@ -18,8 +18,11 @@ const initialState = [
 
 const messageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_MESSAGE':
-      return {...state};
+    case 'FETCH_MESSAGES':
+      return {
+        ...state,
+        messages: [...action.payload],
+      };
     case 'ADD_MESSAGE':
       return {...state, message: action.message};
     case 'DELETE_MESSAGE':

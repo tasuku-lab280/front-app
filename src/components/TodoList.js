@@ -3,11 +3,16 @@ import TextField from '@material-ui/core/TextField';
 import {Scrollbars} from 'react-custom-scrollbars';
 import '../styles/TodoList.css';
 import {useDispatch, useSelector} from 'react-redux';
+import {fetchMessages} from '../redux/messages/actions';
 
 function TodoList() {
   // storeからstateを取得
   const dispatch = useDispatch();
   const selector = useSelector((state) => state).message;
+
+  // setMessageをdispatch
+  const fetch = dispatch(fetchMessages);
+  console.log(fetch);
 
   // state
   const [messages, setMessage] = useState(selector);
