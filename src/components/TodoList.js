@@ -11,8 +11,8 @@ function TodoList() {
   const selector = useSelector((state) => state).message;
 
   // setMessageをdispatch
-  const fetch = dispatch(fetchMessages);
-  console.log(fetch);
+  // const fetch = dispatch(fetchMessages);
+  // console.log(fetch);
 
   // state
   const [messages, setMessage] = useState(selector);
