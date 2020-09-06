@@ -50,11 +50,11 @@ function TodoList() {
                 }>
                 <span className="message-text">{message.body}</span>
               </div>
-              <button
+              {/* <button
                 className="delete-btn"
                 onPress={dispatch.deleteMessage(message)}>
                 削除
-              </button>
+              </button> */}
             </div>
           ))}
         </ul>
